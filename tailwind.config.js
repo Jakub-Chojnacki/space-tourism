@@ -2,31 +2,33 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
-    spacing: {
-      25: "2px",
-      50: "4px",
-      100: "8px",
-      150: "12px",
-      200: "16px",
-      300: "24px",
-      400: "32px",
-      500: "40px",
-      600: "48px",
-      800: "64px",
-      1000: "80px",
-      1200: "96px",
-      1600: "128px",
-    },
-    fontFamily: {
-      barlow: "Barlow,  serif",
-      barlow_condensed: "Barlow Condensed, sans-serif",
-      bellefair: "Bellefair, serif",
-    },
-    colors: {
-      blue: {
-        300: "#D0D6F9",
-        900: "#0B0D17",
+    extend: {
+      spacing: {
+        25: "0.125rem",
+        50: "0.25rem",
+        100: "0.5rem",
+        150: "0.75rem",
+        200: "1rem",
+        300: "1.5rem",
+        400: "2rem",
+        500: "2.5rem",
+        600: "3rem",
+        800: "4rem",
+        1000: "5rem",
+        1200: "6rem",
+        1600: "8rem",
+      },
+      fontFamily: {
+        barlow: "Barlow,  serif",
+        barlow_condensed: "Barlow Condensed, sans-serif",
+        bellefair: "Bellefair, serif",
+      },
+      colors: {
+        blue: {
+          300: "#D0D6F9",
+          900: "#0B0D17",
+        },
+        exploreOutline: "rgba(255,255,255,0.1)",
       },
     },
   },

@@ -8,37 +8,37 @@
 
 /* Typography */
 .text-preset-1 {
-  @apply font-bellefair text-[144px];
+  @apply font-bellefair text-[9rem];
 }
 
 .text-preset-2 {
-  @apply font-bellefair text-[100px];
+  @apply font-bellefair text-[6.25rem];
 }
 
 .text-preset-3 {
-  @apply font-bellefair text-[56px];
+  @apply font-bellefair text-[3.5rem];
 }
 
 .text-preset-4 {
-  @apply font-bellefair text-[32px];
+  @apply font-bellefair text-[2rem];
 }
 
 .text-preset-5 {
-  @apply font-bellefair text-[28px];
+  @apply font-bellefair text-[1.75rem];
 }
 
 .text-preset-6 {
-  @apply font-bellefair text-[28px];
+  @apply font-bellefair text-[1.75rem];
 }
 
 .text-preset-7 {
-  @apply font-barlow_condensed text-[14px] tracking-[2px];
+  @apply font-barlow_condensed text-[0.875rem] tracking-[2px];
 }
 
 .text-preset-8 {
-  @apply font-barlow_condensed text-[16px] tracking-[2px];
+  @apply font-barlow_condensed text-[1rem] tracking-[2px];
 }
 
 .text-preset-9 {
-  @apply font-barlow text-[18px];
+  @apply font-barlow text-[1.125rem];
 }
