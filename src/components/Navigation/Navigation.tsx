@@ -46,11 +46,16 @@ const Navigation = () => {
       {showMobileNav && (
         <NavigationMenu.Root
           orientation="vertical"
-          className="md:hidden w-[66.7vw] bg-mobileNavBackground absolute right-0 top-0 h-[100dvh] z-0 pl-400 pt-1200"
+          className="md:hidden w-[66.7vw] bg-transparent absolute right-0 top-0 h-[100dvh] z-0 pl-400 pt-1200 backdrop-blur-2xl"
         >
           <NavigationMenu.List className="flex flex-col gap-400">
             {menuItems.map(({ text, href }, index) => (
-              <NavigationItem text={text} href={href} index={index} key={text} />
+              <NavigationItem
+                text={text}
+                href={href}
+                index={index}
+                key={text}
+              />
             ))}
           </NavigationMenu.List>
         </NavigationMenu.Root>
