@@ -29,6 +29,7 @@ export default {
           900: "#0B0D17",
         },
         exploreOutline: "rgba(255,255,255,0.1)",
+        mobileNavBackground: "rgba(11, 13, 23, 0.15)"
       },
     },
   },

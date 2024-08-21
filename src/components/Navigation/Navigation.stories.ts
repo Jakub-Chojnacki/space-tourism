@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     layout: "centered",
     backgrounds: {
-      default: "dark",
+      default: "white",
       values: [
         { name: "light", value: "white" },
         { name: "dark", value: "#020617" },

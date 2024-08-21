@@ -1,7 +1,11 @@
+import Navigation from "@components/Navigation/Navigation"
+
 function App() {
 
   return (
-    <div className="text-preset-5">App
+    <div className="">
+      <Navigation/>
+
     </div>
   )
 }
