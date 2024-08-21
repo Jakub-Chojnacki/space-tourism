@@ -1,4 +1,4 @@
-import UnstyledButton from "../UnstyledButton/UnstyledButton";
+import UnstyledButton from "@components/UnstyledButton/UnstyledButton"
 
 const ExploreButton = () => {
   return (

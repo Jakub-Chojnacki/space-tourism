@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
-import ExploreButton from "./ExploreButton";
-import "../index.css";
+import Navigation from "./Navigation";
+import "@/index.css";
 
 const meta = {
-  title: "ExploreButton",
-  component: ExploreButton,
+  title: "Navigation",
+  component: Navigation,
   parameters: {
     layout: "centered",
     backgrounds: {
@@ -20,8 +19,7 @@ const meta = {
   argTypes: {
     backgroundColor: { control: "color" },
   },
-  args: { onClick: fn() },
-} satisfies Meta<typeof ExploreButton>;
+} satisfies Meta<typeof Navigation>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
