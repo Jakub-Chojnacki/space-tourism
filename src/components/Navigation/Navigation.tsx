@@ -31,15 +31,19 @@ const Navigation = () => {
 
   const toggleShowMobileNav = (): void => setShowMobileNav((prev) => !prev);
   return (
-    <header className="flex w-full justify-between items-center text-white relative p-300">
-      <img src={logo} alt="space-tourism-logo" />
+    <header className="flex w-full justify-between items-center text-white relative h-1000 md:h-1200">
+      <img
+        src={logo}
+        alt="space-tourism-logo"
+        className="ml-600 mr-300 md:h-600 md:w-600"
+      />
       {!showMobileNav && (
-        <UnstyledButton onClick={toggleShowMobileNav} className="z-10">
+        <UnstyledButton onClick={toggleShowMobileNav} className="z-10 mr-300">
           <img src={hamburgerIcon} alt="open-nav-icon" className="md:hidden" />
         </UnstyledButton>
       )}
       {showMobileNav && (
-        <UnstyledButton onClick={toggleShowMobileNav} className="z-10">
+        <UnstyledButton onClick={toggleShowMobileNav} className="z-10 mr-300">
           <img src={closeIcon} alt="close-nav-icon" className="md:hidden" />
         </UnstyledButton>
       )}
@@ -60,7 +64,15 @@ const Navigation = () => {
           </NavigationMenu.List>
         </NavigationMenu.Root>
       )}
-      <nav className="hidden md:flex">tablet and desktop</nav>
+      <NavigationMenu.Root className="fix-radix-wrapper hidden md:flex md:bg-tabletNavBg md:w-full md:justify-around md:gap-600 md:items-center md:self-stretch backdrop-blur-4xl relative lg:max-w-[50%]">
+        <span className="hidden absolute left-400 w-[75%] h-[1px] translate-x-[-100%] bg-navLine lg:inline"></span>
+        <NavigationMenu.List className="flex gap-400 md:self-stretch md:items-center">
+          {menuItems.map(({ text, href }, index) => (
+            <NavigationItem text={text} href={href} index={index} key={text} />
+          ))}
+        </NavigationMenu.List>
+      </NavigationMenu.Root>
+   
     </header>
   );
 };

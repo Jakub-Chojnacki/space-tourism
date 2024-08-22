@@ -29,7 +29,12 @@ export default {
           900: "#0B0D17",
         },
         exploreOutline: "rgba(255,255,255,0.1)",
-        mobileNavBackground: "rgba(11, 13, 23, 0.15)",
+        navLine: "rgba(151,151,151,0.25)",
+        tabletNavBg: "rgba(255,255,255,0.05)",
+        tabsHoverBg: "rgba(255,255,255,0.5)"
+      },
+      backdropBlur: {
+        "4xl": "80px",
       },
     },
   },

@@ -42,3 +42,7 @@
 .text-preset-9 {
   @apply font-barlow text-[1.125rem];
 }
+
+.fix-radix-wrapper > div:first-of-type {
+  display: contents;
+}
