@@ -3,6 +3,7 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 
 import { NavigationItemProps } from "./types";
 import { BREAKPOINTS_PX } from "@/const";
+import { Link } from "@tanstack/react-router";
 
 const NavigationItem: React.FC<NavigationItemProps> = ({
   text = "",
@@ -14,14 +15,14 @@ const NavigationItem: React.FC<NavigationItemProps> = ({
 
   return (
     <NavigationMenu.Item>
-      <NavigationMenu.Link
+      <Link
         className="flex items-center gap-150 text-preset-8 border-transparent md:border-b-[3px] active:border-white py-400  hover:border-tabsHoverBg"
-        href={href}
-        active
+        to={href}
       >
         {!noNumber && <span className="font-bold">0{index}</span>}
         <span>{text.toUpperCase()}</span>
-      </NavigationMenu.Link>
+      </Link>
+
     </NavigationMenu.Item>
   );
 };

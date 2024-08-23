@@ -11,19 +11,19 @@ import NavigationItem from "../NavigationItem/NavigationItem";
 const menuItems = [
   {
     text: "Home",
-    href: "",
+    href: "/",
   },
   {
     text: "Destination",
-    href: "",
+    href: "/destination",
   },
   {
     text: "Crew",
-    href: "",
+    href: "/crew",
   },
   {
     text: "Technology",
-    href: "",
+    href: "/technology",
   },
 ];
 const Navigation = () => {

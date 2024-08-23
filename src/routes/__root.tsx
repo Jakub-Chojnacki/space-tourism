@@ -7,7 +7,6 @@ export const Route = createRootRoute({
     <React.Fragment>
       <App>
         <Outlet />
-
       </App>
     </React.Fragment>
   ),
