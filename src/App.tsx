@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
+
 import Navigation from "@components/Navigation/Navigation";
+
 import { BREAKPOINTS_PX } from "./const";
 
-function App() {
+interface AppProps {
+  children: React.ReactNode
+}
+
+/* It's a small website made just to test new technologies so I keep this logic in App. Normally I'd create a separate view file. */
+const App: React.FC<AppProps> = ({ children }) => {
   const [homeBgUrl, setHomeBgUrl] = useState("");
 
   useEffect(() => {
@@ -36,6 +43,9 @@ function App() {
       }}
     >
       <Navigation />
+      <div>
+        {children}
+      </div>
     </div>
   );
 }
