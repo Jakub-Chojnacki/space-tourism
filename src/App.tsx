@@ -2,30 +2,50 @@ import { useEffect, useState } from "react";
 
 import Navigation from "@components/Navigation/Navigation";
 
-import { BREAKPOINTS_PX } from "./const";
+import { backgroundConfig, BREAKPOINTS_PX } from "./const";
+import { useRouterState } from "@tanstack/react-router";
+import { BackgroundPaths } from "./types/app";
 
 interface AppProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 /* It's a small website made just to test new technologies so I keep this logic in App. Normally I'd create a separate view file. */
 const App: React.FC<AppProps> = ({ children }) => {
   const [homeBgUrl, setHomeBgUrl] = useState("");
 
+  const location = useRouterState({ select: (s) => s.location.pathname });
+
+  const getCurrentPath = (): BackgroundPaths => {
+    let path = "home";
+
+    if (location.includes("destination")) {
+      path = "destination";
+    } else if (location.includes("crew")) {
+      path = "crew";
+    } else if (location.includes("technology")) {
+      path = "technology";
+    }
+
+    return path as BackgroundPaths;
+  };
+
   useEffect(() => {
     const handleResize = () => {
+      const path = getCurrentPath();
+
       if (window.innerWidth >= BREAKPOINTS_PX.LG) {
         // Desktop breakpoint
-        setHomeBgUrl("/backgrounds/background-home-desktop.jpg");
+        setHomeBgUrl(`${backgroundConfig?.[path]}desktop.jpg`);
       } else if (
         window.innerWidth >= BREAKPOINTS_PX.MD &&
         window.innerWidth < BREAKPOINTS_PX.LG
       ) {
         // Tablet breakpoint
-        setHomeBgUrl("/backgrounds/background-home-tablet.jpg");
+        setHomeBgUrl(`${backgroundConfig?.[path]}tablet.jpg`);
       } else {
         // Mobile
-        setHomeBgUrl("/backgrounds/background-home-mobile.jpg");
+        setHomeBgUrl(`${backgroundConfig?.[path]}mobile.jpg`);
       }
     };
 
@@ -33,7 +53,7 @@ const App: React.FC<AppProps> = ({ children }) => {
     handleResize(); // Initial setup
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [location, getCurrentPath]);
 
   return (
     <div
@@ -43,11 +63,9 @@ const App: React.FC<AppProps> = ({ children }) => {
       }}
     >
       <Navigation />
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </div>
   );
-}
+};
 
 export default App;

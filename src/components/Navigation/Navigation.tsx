@@ -15,7 +15,7 @@ const menuItems = [
   },
   {
     text: "Destination",
-    href: "/destination",
+    href: "/destination/moon",
   },
   {
     text: "Crew",
@@ -26,6 +26,7 @@ const menuItems = [
     href: "/technology",
   },
 ];
+
 const Navigation = () => {
   const [showMobileNav, setShowMobileNav] = useState(false);
 

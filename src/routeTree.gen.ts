@@ -16,6 +16,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as TechnologyImport } from './routes/technology'
 import { Route as DestinationImport } from './routes/destination'
 import { Route as CrewImport } from './routes/crew'
+import { Route as DestinationDestinationNameImport } from './routes/destination.$destinationName'
 
 // Create Virtual Routes
 
@@ -42,6 +43,13 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const DestinationDestinationNameRoute = DestinationDestinationNameImport.update(
+  {
+    path: '/$destinationName',
+    getParentRoute: () => DestinationRoute,
+  } as any,
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -75,6 +83,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TechnologyImport
       parentRoute: typeof rootRoute
     }
+    '/destination/$destinationName': {
+      id: '/destination/$destinationName'
+      path: '/$destinationName'
+      fullPath: '/destination/$destinationName'
+      preLoaderRoute: typeof DestinationDestinationNameImport
+      parentRoute: typeof DestinationImport
+    }
   }
 }
 
@@ -83,7 +98,9 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
   CrewRoute,
-  DestinationRoute,
+  DestinationRoute: DestinationRoute.addChildren({
+    DestinationDestinationNameRoute,
+  }),
   TechnologyRoute,
 })
 
@@ -108,10 +125,17 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "crew.tsx"
     },
     "/destination": {
-      "filePath": "destination.tsx"
+      "filePath": "destination.tsx",
+      "children": [
+        "/destination/$destinationName"
+      ]
     },
     "/technology": {
       "filePath": "technology.tsx"
+    },
+    "/destination/$destinationName": {
+      "filePath": "destination.$destinationName.tsx",
+      "parent": "/destination"
     }
   }
 }
