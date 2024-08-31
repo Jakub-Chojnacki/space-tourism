@@ -57,7 +57,7 @@ const App: React.FC<AppProps> = ({ children }) => {
 
   return (
     <div
-      className={`min-h-[100dvh] bg-no-repeat bg-cover relative `}
+      className={`min-h-[100dvh] bg-no-repeat bg-cover relative lg:py-400 `}
       style={{
         backgroundImage: `url(${homeBgUrl})`,
       }}

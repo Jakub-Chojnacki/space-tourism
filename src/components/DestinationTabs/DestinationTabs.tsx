@@ -1,48 +1,67 @@
 import React from "react";
 import * as RadixTabs from "@radix-ui/react-tabs";
-import { TabsProps } from "./types";
-import { destinations, destinationTabsConfig } from "@/const";
-import { Link } from "@tanstack/react-router";
+import { useRouterState } from "@tanstack/react-router";
 
-const DestinationTabs: React.FC<TabsProps> = () => {
+import { destinations, destinationTabsConfig } from "@/const";
+import { TabsProps } from "./types";
+
+const DestinationTabs: React.FC<TabsProps> = ({
+  destination,
+  setDestination,
+}) => {
+  const location = useRouterState({ select: (s) => s.location.pathname });
+
   return (
     <RadixTabs.Root
-      className="text-white"
-      defaultValue={destinationTabsConfig[0]?.name}
+      className="text-white md:px-1200 lg:max-w-[35%] lg:pr-0"
+      value={destination}
+      onValueChange={setDestination}
     >
       <RadixTabs.List
-        className="flex gap-400 text-preset-8 text-blue-300 items-center justify-center"
+        className="flex gap-400 text-preset-8 text-blue-300 items-center justify-center lg:justify-start"
         aria-label="Choose your destination"
       >
-        {destinations.map((name) => (
-          <RadixTabs.Trigger
-            className="active:border-b-[3px] border-white"
-            value={name}
-            key={name}
-          >
-            <Link to={`/destination/${name.toLowerCase()}`}>{name}</Link>
-          </RadixTabs.Trigger>
-        ))}
+        {destinations.map((name) => {
+          const isActive = location.includes(name.toLowerCase());
+
+          return (
+            <RadixTabs.Trigger
+              className={`border-b-[3px] border-transparent active:border-white ${isActive && "border-b-[3px]"}`}
+              value={name}
+              key={name}
+            >
+              {name}
+            </RadixTabs.Trigger>
+          );
+        })}
       </RadixTabs.List>
       {destinationTabsConfig.map(
         ({ name, description, avgDistance, travelTime }) => (
           <RadixTabs.Content value={name} key={name}>
-            <h2 className="text-preset-2 text-center">{name.toUpperCase()}</h2>
-            <p className="text-preset-9 text-blue-300 text-center">
+            <h2 className="text-preset-2 text-center my-300 lg:text-left">
+              {name.toUpperCase()}
+            </h2>
+            <p className="text-preset-9 text-blue-300 text-center lg:text-left">
               {description}
             </p>
-            <div className="flex flex-col justify-center items-center my-400 gap-300">
-              <div className="flex flex-col justify-center items-center">
+            <div className="hidden w-full h-[1px] bg-white opacity-25 md:block my-300"></div>
+            <div className="flex flex-col justify-center items-center my-400 gap-300 md:flex-row md:justify-evenly  lg:justify-start">
+              <div className="flex flex-col justify-center items-center ">
                 <span className="text-preset-7 text-blue-300">
                   AVG. DISTANCE
                 </span>
-                <span className="text-preset-6">{avgDistance}</span>
+                <span className="text-preset-6-desktop mt-150">
+                  {avgDistance}
+                </span>
               </div>
+              <div className="w-full h-[1px] bg-white opacity-25 md:hidden"></div>
               <div className="flex flex-col justify-center items-center">
-                <span className="text-preset-7 text-blue-300">
+                <span className="text-preset-7 text-blue-300 ">
                   EST. TRAVEL TIME
                 </span>
-                <span className="text-preset-6">{travelTime}</span>
+                <span className="text-preset-6-desktop mt-150">
+                  {travelTime}
+                </span>
               </div>
             </div>
           </RadixTabs.Content>

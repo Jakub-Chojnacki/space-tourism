@@ -1,22 +1,32 @@
-import { getRouteApi } from "@tanstack/react-router";
+import { useState } from "react";
+
 import DestinationTabs from "../DestinationTabs/DestinationTabs";
+
 import { destinationTabsConfig } from "@/const";
 
-const route = getRouteApi("/destination/$destinationName");
-
 const DestinationPage = () => {
-  const { destinationName } = route.useParams();
+  const [destination, setDestination] = useState(destinationTabsConfig[0].name);
 
   const destinationData = destinationTabsConfig.find(
-    (elem) => elem.name.toLowerCase() === destinationName
+    (elem) => elem.name.toLowerCase() === destination.toLowerCase()
   );
 
   return (
-    <div className="flex flex-col items-center text-white">
-      <h2 className="text-preset-6"><span className="mx-2">01</span>PICK YOUR DESTINATION</h2>
-      <div className="p-300">
-        <img src={destinationData?.imgPath} />
-        <DestinationTabs />
+    <div className="flex flex-col items-center text-white mt-300">
+      <h2 className="text-preset-6 tracking-[0.2rem] md:self-start md:ml-600 lg:ml-1600 lg:mb-1000">
+        <span className="mx-2 text-headingNumber mr-300 font-bold font-barlow_condensed">
+          01
+        </span>
+        PICK YOUR DESTINATION
+      </h2>
+      <div className="p-300 flex flex-col items-center gap-400 lg:flex-row lg:justify-center">
+        <div className="max-w-[50%] lg:max-w-max">
+          <img src={destinationData?.imgPath} />
+        </div>
+        <DestinationTabs
+          destination={destination}
+          setDestination={setDestination}
+        />
       </div>
     </div>
   );

@@ -31,7 +31,8 @@ export default {
         exploreOutline: "rgba(255,255,255,0.1)",
         navLine: "rgba(151,151,151,0.25)",
         tabletNavBg: "rgba(255,255,255,0.05)",
-        tabsHoverBg: "rgba(255,255,255,0.5)"
+        tabsHoverBg: "rgba(255,255,255,0.5)",
+        headingNumber: "rgba(255,255,255,0.25)"
       },
       backdropBlur: {
         "4xl": "80px",

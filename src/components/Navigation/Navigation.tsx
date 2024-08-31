@@ -15,7 +15,7 @@ const menuItems = [
   },
   {
     text: "Destination",
-    href: "/destination/moon",
+    href: "/destination",
   },
   {
     text: "Crew",
