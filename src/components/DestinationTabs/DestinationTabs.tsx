@@ -45,7 +45,7 @@ const DestinationTabs: React.FC<TabsProps> = ({
               {description}
             </p>
             <div className="hidden w-full h-[1px] bg-white opacity-25 md:block my-300"></div>
-            <div className="flex flex-col justify-center items-center my-400 gap-300 md:flex-row md:justify-evenly  lg:justify-start">
+            <div className="flex flex-col justify-center items-center my-400 gap-300 md:flex-row md:justify-evenly  lg:justify-between lg:pr-400">
               <div className="flex flex-col justify-center items-center ">
                 <span className="text-preset-7 text-blue-300">
                   AVG. DISTANCE
