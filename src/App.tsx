@@ -57,13 +57,13 @@ const App: React.FC<AppProps> = ({ children }) => {
 
   return (
     <div
-      className={`min-h-[100dvh] bg-no-repeat bg-cover relative lg:py-400 `}
+      className={`min-h-[100dvh] bg-no-repeat bg-cover relative lg:py-400 lg:flex lg:flex-col `}
       style={{
         backgroundImage: `url(${homeBgUrl})`,
       }}
     >
       <Navigation />
-      <div>{children}</div>
+      {children}
     </div>
   );
 };
