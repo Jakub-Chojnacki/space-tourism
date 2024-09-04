@@ -1,7 +1,5 @@
 import React from "react";
 import * as RadixTabs from "@radix-ui/react-tabs";
-import { useRouterState } from "@tanstack/react-router";
-
 import { destinations, destinationTabsConfig } from "@/const";
 import { TabsProps } from "./types";
 
@@ -9,8 +7,6 @@ const DestinationTabs: React.FC<TabsProps> = ({
   destination,
   setDestination,
 }) => {
-  const location = useRouterState({ select: (s) => s.location.pathname });
-
   return (
     <RadixTabs.Root
       className="text-white md:px-1200 lg:max-w-[35%] lg:pr-0"
@@ -22,11 +18,11 @@ const DestinationTabs: React.FC<TabsProps> = ({
         aria-label="Choose your destination"
       >
         {destinations.map((name) => {
-          const isActive = location.includes(name.toLowerCase());
+          const isActive = destination === name;
 
           return (
             <RadixTabs.Trigger
-              className={`border-b-[3px] border-transparent active:border-white ${isActive && "border-b-[3px]"}`}
+              className={`border-b-[3px] border-transparent active:border-white ${isActive && "border-white"}`}
               value={name}
               key={name}
             >
